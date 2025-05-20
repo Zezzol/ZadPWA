@@ -1,4 +1,4 @@
-const CACHE_NAME = "weathernote_cache";
+const CACHE_NAME = "Pogodynka_cache";
 const urlsToCache = [
   "index.html",
   "offline.html",
