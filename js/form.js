@@ -12,28 +12,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const city = document.getElementById("city").value;
     const noteText = document.getElementById("note").value;
 
+    let weatherSummary = null;
+
     try {
       const weather = await getWeatherForCity(city);
 
-      const weatherSummary = `
-        
+      weatherSummary = `
+      
       Pogoda w ${weather.city}, ${weather.country}:
       Temperatura: ${weather.temperature}°C
       Wiatr: ${weather.windspeed} km/h
-      `;
+      `.trim();
+    } catch (err) {
+      console.warn("Nie udało się pobrać danych pogodowych:", err);
+    }
 
+    try {
       await saveNoteOffline({
-        city: weather.city,
-        content: `${noteText}\n\n${weatherSummary}`,
+        city,
+        content: weatherSummary ? `${noteText}\n\n${weatherSummary}` : "",
         date: new Date().toISOString()
       });
 
-      alert("Notatka z pogodą zapisana!");
+      alert("Notatka zapisana!");
       form.reset();
-
     } catch (err) {
-      console.error(err);
-      alert("Błąd podczas pobierania pogody lub zapisu notatki.");
+      console.error("Błąd zapisu notatki:", err);
+      alert("Wystąpił błąd podczas zapisu notatki.");
     }
   });
 });
