@@ -1,6 +1,6 @@
 {
-  "name": "WeatherNote",
-  "short_name": "WeatherNote",
+  "name": "Pogodynka",
+  "short_name": "Pogodynka",
   "id":"ZadPWA/index.html",
   "start_url": "index.html",
   "display": "standalone",

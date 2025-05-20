@@ -1,4 +1,4 @@
-const DB_NAME = "WeatherNoteDB";
+const DB_NAME = "PogodynkaDB";
 const DB_VERSION = 2;
 const STORE_NOTES = "notes";
 
