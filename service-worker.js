@@ -21,17 +21,12 @@ self.addEventListener("install", (e) => {
 // Fetch: jedna obsługa wszystkich żądań
 self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {
-    // Przechwytywanie żądań stron (HTML)
     event.respondWith(
-      fetch(event.request)
-        .catch(() => caches.match("offline.html"))
+      fetch(event.request).catch(() => caches.match("offline.html"))
     );
   } else {
-    // Inne zasoby: cache-first
     event.respondWith(
-      caches.match(event.request).then((res) => {
-        return res || fetch(event.request);
-      })
+      caches.match(event.request).then((res) => res || fetch(event.request))
     );
   }
 });
