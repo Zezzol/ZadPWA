@@ -2,7 +2,6 @@ const DB_NAME = "WeatherNoteDB";
 const DB_VERSION = 2;
 const STORE_NOTES = "notes";
 
-// Otwarcie (lub utworzenie) bazy danych
 function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -21,7 +20,6 @@ function openDB() {
   });
 }
 
-// Zapis notatki
 export async function saveNoteOffline(noteData) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
@@ -34,7 +32,6 @@ export async function saveNoteOffline(noteData) {
   });
 }
 
-// Pobranie wszystkich notatek
 export async function getAllNotes() {
   const db = await openDB();
   return new Promise((resolve, reject) => {

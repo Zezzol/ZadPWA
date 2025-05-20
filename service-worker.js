@@ -1,4 +1,4 @@
-const CACHE_NAME = "weathernote-cache-v1";
+const CACHE_NAME = "weathernote_cache";
 const urlsToCache = [
   "index.html",
   "offline.html",
