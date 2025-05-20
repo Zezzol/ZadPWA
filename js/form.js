@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const weather = await getWeatherForCity(city);
 
       weatherSummary = `
-      
+
       Pogoda w ${weather.city}, ${weather.country}:
       Temperatura: ${weather.temperature}°C
       Wiatr: ${weather.windspeed} km/h
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       await saveNoteOffline({
         city,
-        content: weatherSummary ? `${noteText}\n\n${weatherSummary}` : "",
+        content: weatherSummary ? `\n\n${weatherSummary}` : "",
         date: new Date().toISOString()
       });
 
