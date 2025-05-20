@@ -1,7 +1,7 @@
 const CACHE_NAME = "weathernote-cache-v1";
 const urlsToCache = [
-  "index.html",
-  "form.html",
+  "/",
+  "index.html",,
   "offline.html",
   "style.css",
   "js/form.js",
