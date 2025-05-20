@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeatherNote</title>
+  <title>Pogodynka</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>WeatherNote</h1>
+  <h1>Pogodynka</h1>
   <nav>
     <a href="form.html">Dodaj notatkę</a> |
     <a href="weather.html">Sprawdź pogodę</a>
   </nav>
   <div id="notesContainer"></div>
-  <script src="sw-register.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("SW zarejestrowany"))
+    .catch((err) => console.error("SW error:", err));
+  }
+</script>
   <script type="module" src="js/notelsit.js"></script>
 </body>
 </html>
