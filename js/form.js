@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const weather = await getWeatherForCity(city);
 
       const weatherSummary = `
-        Pogoda w ${weather.city}, ${weather.country}:
-        Temperatura: ${weather.temperature}°C
-        Wiatr: ${weather.windspeed} km/h
-        Czas pomiaru: ${weather.time}
+        
+      Pogoda w ${weather.city}, ${weather.country}:
+      Temperatura: ${weather.temperature}°C
+      Wiatr: ${weather.windspeed} km/h
       `;
 
       await saveNoteOffline({
