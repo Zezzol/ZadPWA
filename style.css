@@ -12,3 +12,17 @@ button {
   padding: 10px 15px;
   cursor: pointer;
 }
+.offlinebody  {
+  text-align: center;
+  padding: 2rem;
+  font-family: sans-serif;
+  background-color: #f8f8f8;
+}
+.offline-box {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
