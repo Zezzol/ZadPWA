@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       await saveNoteOffline({
         city,
-        content: weatherSummary ? `\n\n${weatherSummary}` : "",
+        noteText,
+        content: weatherSummary ? `\n${weatherSummary}` : "",
         date: new Date().toISOString()
       });
 

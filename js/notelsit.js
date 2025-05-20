@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const li = document.createElement('li');
     li.innerHTML = `
       <strong>${note.city}</strong><br />
-      <br>${note.note}<br/>
+      ${note.noteText}<br/>
       ${note.content || 'Brak treści pogodowych'}<br />
       <em>${note.date || 'brak daty'}</em>
     `;
