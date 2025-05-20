@@ -10,14 +10,12 @@ const urlsToCache = [
   "icons/icon-512.png"
 ];
 
-// Instalacja: cache’ujemy wszystkie potrzebne pliki
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
 });
 
-// Fetch: jedna obsługa wszystkich żądań
 self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {
     event.respondWith(
