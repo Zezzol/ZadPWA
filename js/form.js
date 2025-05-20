@@ -1,31 +1,39 @@
 import { saveNoteOffline } from "./indexdb.js";
+import { getWeatherForCity } from "./weatherAPI.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("noteForm");
 
-  if (!form) {
-    console.error("Nie znaleziono formularza #noteForm");
-    return;
-  }
+  if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const city = document.getElementById("city").value;
-    const note = document.getElementById("note").value;
+    const noteText = document.getElementById("note").value;
 
     try {
+      const weather = await getWeatherForCity(city);
+
+      const weatherSummary = `
+        Pogoda w ${weather.city}, ${weather.country}:
+        Temperatura: ${weather.temperature}°C
+        Wiatr: ${weather.windspeed} km/h
+        Czas pomiaru: ${weather.time}
+      `;
+
       await saveNoteOffline({
-        city,
-        note,
-        date: new Date()
+        city: weather.city,
+        content: `${noteText}\n\n${weatherSummary}`,
+        date: new Date().toISOString()
       });
 
-      alert("Notatka zapisana!");
+      alert("Notatka z pogodą zapisana!");
       form.reset();
+
     } catch (err) {
-      console.error("Błąd przy zapisie notatki:", err);
-      alert("Wystąpił błąd podczas zapisu.");
+      console.error(err);
+      alert("Błąd podczas pobierania pogody lub zapisu notatki.");
     }
   });
 });
